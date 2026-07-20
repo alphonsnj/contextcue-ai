@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+:root {
+  /* Color Scheme declaration for native browser widgets */
+  color-scheme: light dark;
+
+  /* Font mappings from Next.js google font loader */
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-outfit), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+
+  /* Design System Tokens - Light Mode */
+  --bg-color-light: oklch(98% 0.005 250);
+  --text-color-light: oklch(18% 0.01 250);
+  --border-color-light: oklch(90% 0.01 250);
+  --muted-text-light: oklch(50% 0.02 250);
+  
+  --primary-light: oklch(55% 0.22 260); /* Deep Royal Indigo */
+  --primary-hover-light: oklch(48% 0.22 260);
+  --secondary-light: oklch(62% 0.16 200); /* Oceanic Teal */
+  --accent-light: oklch(65% 0.20 340); /* Soft Rose Violet */
+  --card-bg-light: oklch(100% 0 0);
+  --card-hover-bg-light: oklch(99% 0.003 250);
+  --glow-light: rgba(99, 102, 241, 0.05);
+  
+  /* Design System Tokens - Dark Mode */
+  --bg-color-dark: oklch(10% 0.02 260); /* Deep Obsidian Midnight */
+  --text-color-dark: oklch(96% 0.01 260);
+  --border-color-dark: oklch(20% 0.02 260);
+  --muted-text-dark: oklch(65% 0.02 260);
+  
+  --primary-dark: oklch(68% 0.18 260); /* Glowing Indigo */
+  --primary-hover-dark: oklch(74% 0.18 260);
+  --secondary-dark: oklch(76% 0.14 200); /* Cyber Teal */
+  --accent-dark: oklch(74% 0.18 340); /* Neon Violet Rose */
+  --card-bg-dark: oklch(14% 0.02 260 / 0.7);
+  --card-hover-bg-dark: oklch(17% 0.02 260 / 0.85);
+  --glow-dark: rgba(99, 102, 241, 0.15);
+
+  /* Fallback assignments (System preference by default) */
+  --bg-color: var(--bg-color-light);
+  --text-color: var(--text-color-light);
+  --border-color: var(--border-color-light);
+  --muted-text: var(--muted-text-light);
+  --primary: var(--primary-light);
+  --primary-hover: var(--primary-hover-light);
+  --secondary: var(--secondary-light);
+  --accent: var(--accent-light);
+  --card-bg: var(--card-bg-light);
+  --card-hover-bg: var(--card-hover-bg-light);
+  --glow: var(--glow-light);
+
+  /* Accent Color for native inputs */
+  --accent-color: var(--primary-light);
+
+  @media (prefers-color-scheme: dark) {
+    --bg-color: var(--bg-color-dark);
+    --text-color: var(--text-color-dark);
+    --border-color: var(--border-color-dark);
+    --muted-text: var(--muted-text-dark);
+    --primary: var(--primary-dark);
+    --primary-hover: var(--primary-hover-dark);
+    --secondary: var(--secondary-dark);
+    --accent: var(--accent-dark);
+    --card-bg: var(--card-bg-dark);
+    --card-hover-bg: var(--card-hover-bg-dark);
+    --glow: var(--glow-dark);
+    --accent-color: var(--primary-dark);
+  }
+
+  /* Support standard light-dark() CSS function */
+  @supports (color: light-dark(white, black)) {
+    --bg-color: light-dark(var(--bg-color-light), var(--bg-color-dark));
+    --text-color: light-dark(var(--text-color-light), var(--text-color-dark));
+    --border-color: light-dark(var(--border-color-light), var(--border-color-dark));
+    --muted-text: light-dark(var(--muted-text-light), var(--muted-text-dark));
+    --primary: light-dark(var(--primary-light), var(--primary-dark));
+    --primary-hover: light-dark(var(--primary-hover-light), var(--primary-hover-dark));
+    --secondary: light-dark(var(--secondary-light), var(--secondary-dark));
+    --accent: light-dark(var(--accent-light), var(--accent-dark));
+    --card-bg: light-dark(var(--card-bg-light), var(--card-bg-dark));
+    --card-hover-bg: light-dark(var(--card-hover-bg-light), var(--card-hover-bg-dark));
+    --glow: light-dark(var(--glow-light), var(--glow-dark));
+    --accent-color: light-dark(var(--primary-light), var(--primary-dark));
+  }
+
+  accent-color: var(--accent-color);
+}
+
+/* Explicit light-mode override */
+:root.light {
+  --bg-color: var(--bg-color-light);
+  --text-color: var(--text-color-light);
+  --border-color: var(--border-color-light);
+  --muted-text: var(--muted-text-light);
+  --primary: var(--primary-light);
+  --primary-hover: var(--primary-hover-light);
+  --secondary: var(--secondary-light);
+  --accent: var(--accent-light);
+  --card-bg: var(--card-bg-light);
+  --card-hover-bg: var(--card-hover-bg-light);
+  --glow: var(--glow-light);
+  --accent-color: var(--primary-light);
+  accent-color: var(--accent-color);
+}
+
+/* Explicit dark-mode override */
+:root.dark {
+  --bg-color: var(--bg-color-dark);
+  --text-color: var(--text-color-dark);
+  --border-color: var(--border-color-dark);
+  --muted-text: var(--muted-text-dark);
+  --primary: var(--primary-dark);
+  --primary-hover: var(--primary-hover-dark);
+  --secondary: var(--secondary-dark);
+  --accent: var(--accent-dark);
+  --card-bg: var(--card-bg-dark);
+  --card-hover-bg: var(--card-hover-bg-dark);
+  --glow: var(--glow-dark);
+  --accent-color: var(--primary-dark);
+  accent-color: var(--accent-color);
+}
+
+/* Scrollbar Customization */
+:root {
+  --scrollbar-track: light-dark(oklch(96% 0.005 250), oklch(14% 0.02 260));
+  --scrollbar-thumb: light-dark(oklch(80% 0.01 250), oklch(30% 0.02 260));
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Webkit Scrollbar fallback wrapper */
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+  }
+}
+
+@theme {
+  --color-bg-base: var(--bg-color);
+  --color-text-base: var(--text-color);
+  --color-text-muted: var(--muted-text);
+  --color-border-base: var(--border-color);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-card-bg: var(--card-bg);
+  --color-card-hover: var(--card-hover-bg);
+  --color-glow-effect: var(--glow);
+
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+
+  --animate-pulse-slow: pulse-slow 8s infinite alternate;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes pulse-slow {
+    0% { transform: scale(1); opacity: 0.15; filter: blur(50px); }
+    100% { transform: scale(1.15); opacity: 0.35; filter: blur(75px); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+}
+
+/* Custom Base resets */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Keyboard Accessibility */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Screen reader visual helper class */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Skip link styled for top page override */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  background-color: var(--primary);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+  font-weight: 500;
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+/* Limit reading columns width */
+p {
+  max-width: 80ch;
+}
